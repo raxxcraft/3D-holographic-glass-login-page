@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+/* White studio background */
+body {
+  @apply bg-white min-h-screen flex items-center justify-center;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Glass base */
+.glass-card {
+  position: relative;
+  background: rgba(120, 180, 255, 0.18);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+
+/* Inner reflection */
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.45),
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.35)
+  );
+  pointer-events: none;
+}
+
+/* Light refraction streak */
+.glass-card::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 42%,
+    rgba(255,255,255,0.35) 50%,
+    transparent 58%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+}
